@@ -127,9 +127,9 @@ public class FilterGUI extends PluginMenu {
         var next = option.getIterator().next();
 
         final var placeholders = StringPlaceholders.builder()
-                .addPlaceholder("current", PluginUtils.formatEnum(option.getFilterType().name()))
-                .addPlaceholder("next", PluginUtils.formatEnum(next.name()))
-                .addPlaceholder("description", hopper.getFilterType().getDesc())
+                .add("current", PluginUtils.formatEnum(option.getFilterType().name()))
+                .add("next", PluginUtils.formatEnum(next.name()))
+                .add("description", hopper.getFilterType().getDesc())
                 .build();
 
         MenuItem.create(this.config)

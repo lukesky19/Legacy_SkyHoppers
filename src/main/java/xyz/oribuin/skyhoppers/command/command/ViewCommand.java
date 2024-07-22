@@ -1,9 +1,7 @@
 package xyz.oribuin.skyhoppers.command.command;
 
 import dev.rosewood.rosegarden.RosePlugin;
-import dev.rosewood.rosegarden.command.framework.CommandContext;
-import dev.rosewood.rosegarden.command.framework.RoseCommand;
-import dev.rosewood.rosegarden.command.framework.RoseCommandWrapper;
+import dev.rosewood.rosegarden.command.framework.*;
 import dev.rosewood.rosegarden.command.framework.annotation.RoseExecutable;
 import org.bukkit.Material;
 import org.bukkit.block.Hopper;
@@ -11,10 +9,10 @@ import org.bukkit.entity.Player;
 import xyz.oribuin.skyhoppers.manager.HopperManager;
 import xyz.oribuin.skyhoppers.manager.LocaleManager;
 
-public class ViewCommand extends RoseCommand {
+public class ViewCommand extends BaseRoseCommand {
 
-    public ViewCommand(RosePlugin rosePlugin, RoseCommandWrapper parent) {
-        super(rosePlugin, parent);
+    public ViewCommand(RosePlugin rosePlugin) {
+        super(rosePlugin);
     }
 
     @RoseExecutable
@@ -57,22 +55,10 @@ public class ViewCommand extends RoseCommand {
     }
 
     @Override
-    protected String getDefaultName() {
-        return "view";
-    }
-
-    @Override
-    public String getDescriptionKey() {
-        return "command-view-description";
-    }
-
-    @Override
-    public String getRequiredPermission() {
-        return "skyhoppers.view";
-    }
-
-    @Override
-    public boolean isPlayerOnly() {
-        return true;
+    protected CommandInfo createCommandInfo() {
+        return CommandInfo.builder("view")
+                .descriptionKey("command-view-description")
+                .permission("skyhoppers.commands.view")
+                .build();
     }
 }

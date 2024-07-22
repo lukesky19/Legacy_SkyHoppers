@@ -7,7 +7,7 @@ plugins {
 }
 
 group "xyz.oribuin.skyhoppers"
-version "1.0.5"
+version "1.0.6"
 
 java {
     toolchain {
@@ -33,40 +33,43 @@ repositories {
     maven { url "https://nexus.iridiumdevelopment.net/repository/maven-releases/" }
     maven { url 'https://jitpack.io/' }
     maven { url 'https://repo.glaremasters.me/repository/towny/' }
+    maven { url 'https://repo.bg-software.com/repository/api/' }
 
 
-    maven {
-        url = 'https://repo.rosewooddev.io/repository/maven-public'
-        credentials {
-            username project.mavenUser
-            password project.mavenPassword
-            authentication {
-                basic(BasicAuthentication)
-            }
-        }
-    }
+//    maven {
+//        url = 'https://repo.rosewooddev.io/repository/maven-public'
+//        credentials {
+//            username project.mavenUser
+//            password project.mavenPassword
+//            authentication {
+//                basic(BasicAuthentication)
+//            }
+//        }
+//    }
 }
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT'
     compileOnly 'com.mojang:authlib:1.5.21'
 
+
     // Stacker plugins
     compileOnly 'dev.rosewood:rosestacker:1.5.0'
-    compileOnly 'com.bgsoftware:wildstacker:3.1.1'
+    compileOnly 'com.bgsoftware:WildStackerAPI:2024.1'
 
     // Plugin Dependencies
     compileOnly 'world.bentobox:bentobox:1.9.2-SNAPSHOT'
 //    compileOnly 'com.github.TechFortress:GriefPrevention:16.18' // Fuck this plugin and how it's coded
-    compileOnly 'com.iridium:IridiumSkyblock:3.2.8'
+    compileOnly 'com.iridium:IridiumTeams:2.5.7'
+    compileOnly 'com.iridium:IridiumSkyblock:4.0.9.1'
     compileOnly 'com.github.Angeschossen:LandsAPI:6.22.0'
     compileOnly 'com.palmergames.bukkit.towny:towny:0.98.2.0'
     compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.7'
     compileOnly 'me.clip:placeholderapi:2.11.2'
 
     // Frameworks & MySQL APIs
-    implementation 'dev.rosewood:rosegarden:1.1.0.48-SNAPSHOT'
-    implementation('dev.triumphteam:triumph-gui:3.1.3') {
+    api 'dev.rosewood:rosegarden:1.3.2'
+    api('dev.triumphteam:triumph-gui:3.1.3') {
         exclude group: 'com.google.code.gson', module: 'gson' // Already included in spigot-api
     }
 }
@@ -86,4 +89,4 @@ processResources {
     }
 }
 
-tasks.getByName("build").dependsOn("shadowJar")
+build.dependsOn shadowJar

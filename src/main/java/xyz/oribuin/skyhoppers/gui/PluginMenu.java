@@ -69,7 +69,7 @@ public abstract class PluginMenu {
             });
         }
 
-        this.config.save();
+        this.config.save(file);
     }
 
 

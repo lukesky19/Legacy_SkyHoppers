@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.logging.Level;
 
 public class SkyHoppersPlugin extends RosePlugin {
 
@@ -43,7 +44,7 @@ public class SkyHoppersPlugin extends RosePlugin {
 
     @Override
     protected void enable() {
-
+        this.getServer().getLogger().log(Level.INFO, String.valueOf(NMSUtil.getVersionNumber()));
         if (NMSUtil.getVersionNumber() < 17) {
             this.getLogger().severe("This plugin requires 1.17 or higher, Disabling plugin!");
             this.getServer().getPluginManager().disablePlugin(this);

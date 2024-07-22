@@ -336,10 +336,10 @@ public class HopperManager extends Manager {
      */
     public StringPlaceholders getPlaceholders(SkyHopper skyHopper) {
         return StringPlaceholders.builder()
-                .addPlaceholder("enabled", skyHopper.isEnabled() ? "Enabled" : "Disabled")
-                .addPlaceholder("filter_type", PluginUtils.formatEnum(skyHopper.getFilterType().name()))
-                .addPlaceholder("owner", skyHopper.getOwner() == null ? "None" : Bukkit.getOfflinePlayer(skyHopper.getOwner()).getName())
-                .addPlaceholder("linked", PluginUtils.formatContainerLoc(skyHopper.getLinked()))
+                .add("enabled", skyHopper.isEnabled() ? "Enabled" : "Disabled")
+                .add("filter_type", PluginUtils.formatEnum(skyHopper.getFilterType().name()))
+                .add("owner", skyHopper.getOwner() == null ? "None" : Bukkit.getOfflinePlayer(skyHopper.getOwner()).getName())
+                .add("linked", PluginUtils.formatContainerLoc(skyHopper.getLinked()))
                 .build();
     }
 

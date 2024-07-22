@@ -1,0 +1,58 @@
+# en_US translation by Oribuin
+# General Messages
+prefix: '#99ff99&lSkyHoppers &8| &f'
+
+# Base Command
+base-command-color: '#99ff99'
+base-command-help: '&fUse #99ff99/hopper help &ffor command information.'
+
+# Reload Command
+command-reload-description: Reloads the plugin.
+command-reload-reloaded: Configuration and locale files were reloaded
+
+# Help Command
+command-help-title: '&fAvailable Commands:'
+command-help-description: Displays the help menu.
+command-help-list-description: '&8 - #99ff99/%cmd% %subcmd% %args% &7- %desc%'
+command-help-list-description-no-args: '&8 - #99ff99/%cmd% %subcmd% &7- %desc%'
+
+# Give Command
+command-give-description: Give a player a hopper.
+command-give-success: 'You have given #99ff99%player% &fa x#99ff99%amount% &fSkyHopper.'
+command-give-received: 'You have received a #99ff99x%amount% SkyHopper.'
+
+# Giveall Command
+command-giveall-description: Give all players a hopper.
+command-giveall-success: 'You have given all #99ff99%players%&f  players a x#99ff99%amount% &fSkyHopper.'
+command-giveall-received: 'You have received a #99ff99x%amount% SkyHopper.'
+
+# View Command
+command-view-description: Visualize a hopper.
+command-view-success: You are now viewing a hopper.
+command-view-disabled: You are no longer viewing a hopper.
+command-view-no-block: You must be looking at a hopper to view it.
+
+# Generic Command Messages
+no-permission: You don't have permission to execute this.
+only-player: This command can only be executed by a player.
+unknown-command: 'Unknown command, use #00B4DB/%cmd%&f help for more info'
+unknown-command-error: '&cAn unknown error occurred; details have been printed to console. Please contact a server administrator.'
+invalid-subcommand: '&cInvalid subcommand.'
+invalid-argument: '&cInvalid argument: %message%.'
+invalid-argument-null: '&cInvalid argument: %name% was null.'
+missing-arguments: '&cMissing arguments, &b%amount% &crequired.'
+missing-arguments-extra: '&cMissing arguments, &b%amount%+ &crequired.'
+
+# Hopper Messages
+hopper-cannot-build: You cannot place a sky hopper here.
+hopper-cannot-open: You cannot open this hopper here.
+hopper-already-placed: There is already a sky hopper here.
+hopper-placed-success: You have placed a sky hopper.
+hopper-removed-success: You have destroyed a sky hopper.
+hopper-linked-success: You have linked a sky hopper to a container.
+hopper-unlinked-success: You have unlinked a sky hopper from a container.
+hopper-link-start: Left click a container to link it to this hopper.
+
+# Argument Handler Error Messages
+argument-handler-integer: Integer [%input%] must be a whole number between -2^31 and 2^31-1 inclusively
+argument-handler-player: No Player with the username [%input%] was found online

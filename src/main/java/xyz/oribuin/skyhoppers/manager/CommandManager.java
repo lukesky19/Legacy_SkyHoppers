@@ -1,11 +1,12 @@
 package xyz.oribuin.skyhoppers.manager;
 
 import dev.rosewood.rosegarden.RosePlugin;
-import dev.rosewood.rosegarden.command.framework.RoseCommandWrapper;
+import dev.rosewood.rosegarden.command.framework.BaseRoseCommand;
 import dev.rosewood.rosegarden.manager.AbstractCommandManager;
-import xyz.oribuin.skyhoppers.command.HopperCommandWrapper;
+import xyz.oribuin.skyhoppers.command.command.BaseCommand;
 
 import java.util.List;
+import java.util.function.Function;
 
 public class CommandManager extends AbstractCommandManager {
 
@@ -14,13 +15,7 @@ public class CommandManager extends AbstractCommandManager {
     }
 
     @Override
-    public List<Class<? extends RoseCommandWrapper>> getRootCommands() {
-        return List.of(HopperCommandWrapper.class);
+    public List<Function<RosePlugin, BaseRoseCommand>> getRootCommands() {
+        return List.of(BaseCommand::new);
     }
-
-    @Override
-    public List<String> getArgumentHandlerPackages() {
-        return List.of();
-    }
-
 }

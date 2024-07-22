@@ -1,7 +1,7 @@
 package xyz.oribuin.skyhoppers.hook.protection;
 
-import com.iridium.iridiumskyblock.PermissionType;
 import com.iridium.iridiumskyblock.api.IridiumSkyblockAPI;
+import com.iridium.iridiumteams.PermissionType;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 

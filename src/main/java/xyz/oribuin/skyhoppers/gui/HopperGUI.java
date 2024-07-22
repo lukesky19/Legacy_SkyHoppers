@@ -85,7 +85,7 @@ public class HopperGUI extends PluginMenu {
 
         var suctionItem = MenuItem.create(this.config)
                 .path("suction")
-                .placeholders(StringPlaceholders.single("status", hopper.isEnabled() ? suctionEnabled : suctionDisabled))
+                .placeholders(StringPlaceholders.of("status", hopper.isEnabled() ? suctionEnabled : suctionDisabled))
                 .player(player)
                 .action(event -> {
                     hopper.setEnabled(!hopper.isEnabled());
@@ -111,7 +111,7 @@ public class HopperGUI extends PluginMenu {
 
         MenuItem.create(this.config)
                 .path("filter")
-                .placeholders(StringPlaceholders.single("filter", PluginUtils.formatEnum(hopper.getFilterType().name())))
+                .placeholders(StringPlaceholders.of("filter", PluginUtils.formatEnum(hopper.getFilterType().name())))
                 .player(player)
                 .action(event -> this.plugin.getManager(MenuManager.class)
                         .getGUI(FilterGUI.class)
