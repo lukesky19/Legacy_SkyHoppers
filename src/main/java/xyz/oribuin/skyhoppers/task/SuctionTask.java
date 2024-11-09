@@ -45,6 +45,8 @@ public class SuctionTask extends BukkitRunnable {
                     var item = (Item) entity;
 
                     switch (skyHopper.getFilterType()) {
+                        case NONE -> transferItem(item, hopperBlock, block);
+
                         case WHITELIST -> {
                             for (Material material : skyHopper.getFilterItems()) {
                                 if (item.getItemStack().getType().equals(material)) {
@@ -54,8 +56,11 @@ public class SuctionTask extends BukkitRunnable {
                         }
 
                         case BLACKLIST -> {
+
+
+
                             for (Material material : skyHopper.getFilterItems()) {
-                                if (!item.getItemStack().getType().equals(material)) {
+                                if(!item.getItemStack().getType().equals(material)) {
                                     transferItem(item, hopperBlock, block);
                                 }
                             }
@@ -66,6 +71,8 @@ public class SuctionTask extends BukkitRunnable {
                                 if (item.getItemStack().getType().equals(material)) {
                                     item.getWorld().spawnParticle(Particle.SMOKE_NORMAL, item.getLocation(), 3, 0.0, 0.0, 0.0, 0.0);
                                     item.remove();
+                                } else {
+                                    transferItem(item, hopperBlock, block);
                                 }
                             }
                         }
