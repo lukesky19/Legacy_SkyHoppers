@@ -56,9 +56,6 @@ public class SuctionTask extends BukkitRunnable {
                         }
 
                         case BLACKLIST -> {
-
-
-
                             for (Material material : skyHopper.getFilterItems()) {
                                 if(!item.getItemStack().getType().equals(material)) {
                                     transferItem(item, hopperBlock, block);
