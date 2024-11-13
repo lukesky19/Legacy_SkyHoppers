@@ -3,6 +3,7 @@ package xyz.oribuin.skyhoppers.task;
 import dev.rosewood.rosegarden.RosePlugin;
 import org.bukkit.Material;
 import org.bukkit.block.Furnace;
+import org.bukkit.block.Hopper;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -27,27 +28,24 @@ public class ItemTransferTask extends BukkitRunnable {
 
     @Override
     public void run() {
+        for(SkyHopper skyHopper : this.manager.getEnabledHoppers()) {
+            if(skyHopper != null
+                    && skyHopper.getLocation() != null
+                    && skyHopper.getLinked() != null
+                    && skyHopper.getLocation().getBlock().getState() instanceof Hopper hopperBlock
+                    && skyHopper.getLocation().isChunkLoaded()
+                    && !hopperBlock.isLocked()) {
 
-        for (SkyHopper skyHopper : this.manager.getEnabledHoppers()) {
-            if (skyHopper == null || skyHopper.getLocation() == null || skyHopper.getLinked() == null)
-                return;
+                final Inventory hopperInventory = hopperBlock.getInventory();
+                final Inventory linkedInventory = skyHopper.getLinked().getInventory();
 
-            if (!(skyHopper.getLocation().getBlock().getState() instanceof org.bukkit.block.Hopper hopperBlock))
-                return;
+                final List<ItemStack> hopperItems = Arrays.stream(hopperInventory.getContents())
+                        .filter(Objects::nonNull)
+                        .filter(item -> item.getType() != Material.AIR)
+                        .toList();
 
-            if (hopperBlock.isLocked())
-                return;
-
-            final Inventory hopperInventory = hopperBlock.getInventory();
-            final Inventory linkedInventory = skyHopper.getLinked().getInventory();
-
-            final List<ItemStack> hopperItems = Arrays.stream(hopperInventory.getContents())
-                    .filter(Objects::nonNull)
-                    .filter(item -> item.getType() != Material.AIR)
-                    .toList();
-
-
-            hopperItems.stream().findFirst().ifPresent(itemStack -> this.transferToNormalInv(itemStack, linkedInventory));
+                hopperItems.stream().findFirst().ifPresent(itemStack -> this.transferToNormalInv(itemStack, linkedInventory));
+            }
         }
 
     }

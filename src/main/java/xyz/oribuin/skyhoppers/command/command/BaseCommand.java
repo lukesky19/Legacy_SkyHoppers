@@ -20,7 +20,8 @@ public class BaseCommand extends BaseRoseCommand {
                         .optionalSub(
                                 new ViewCommand(this.rosePlugin),
                                 new GiveAllCommand(this.rosePlugin),
-                                new GiveCommand(this.rosePlugin)
+                                new GiveCommand(this.rosePlugin),
+                                new ReloadCommand(this.rosePlugin)
                         ))
                 .build();
     }
